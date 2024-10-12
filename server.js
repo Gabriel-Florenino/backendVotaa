@@ -10,6 +10,7 @@ const likeMensagens = require('./routes/likeMensagens'); // Rotas dos mensagens
 const cors = require('cors');
 
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 // Chame a função de configuração do Swagger
