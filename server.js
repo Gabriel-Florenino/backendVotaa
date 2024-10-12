@@ -7,6 +7,7 @@ const propostasRoutes = require('./routes/propostas'); // Rotas dos propostas
 const mensagensRoutes = require('./routes/mensagens'); // Rotas dos mensagens
 const engajamentoPropostasRoutes = require('./routes/engajamentoPropostas'); // Rotas dos mensagens
 const likeMensagens = require('./routes/likeMensagens'); // Rotas dos mensagens
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,6 +24,15 @@ app.use('/api/propostas', propostasRoutes);
 app.use('/api/mensagens', mensagensRoutes);
 app.use('/api/engajamento', engajamentoPropostasRoutes);
 app.use('/api/mensagensengajamento', likeMensagens);
+
+
+app.use(cors({
+    origin: 'http://localhost:5173', // Permite apenas a origem do seu app
+}));
+
+app.get('/api/propostas', (req, res) => {
+    res.json({ message: 'Dados de propostas' });
+});
 
 
 app.listen(PORT, () => {
